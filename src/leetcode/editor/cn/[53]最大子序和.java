@@ -64,17 +64,17 @@ class Solution {
     public int maxSubArray_my1(int[] nums) {
         int temp = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (temp>0){
+            if (temp > 0) {
                 temp = nums[i] + temp;
                 nums[i] = temp;
-            }else{
+            } else {
                 temp = nums[i];
             }
         }
         //从数组中去取最大值
         int maxAns = nums[0];   //假设第一个元素是最大值
         for (int num : nums) {
-            maxAns = Math.max(num,maxAns);
+            maxAns = Math.max(num, maxAns);
         }
         return maxAns;
     }
@@ -83,13 +83,13 @@ class Solution {
      * 优化个人方法一：贪心 ≈ 官方推荐方法一：贪心
      * 解答成功: 执行耗时:1 ms,击败了92.21% 的Java用户 内存消耗:38.4 MB,击败了52.37% 的Java用户
      */
-    public int maxSubArray_l1(int[] nums){
+    public int maxSubArray_l1(int[] nums) {
         int sum = nums[0];
         int maxAns = nums[0];
         for (int i = 1; i < nums.length; i++) {
             //sum = sum > 0 ? sum + nums[i]  : nums[i];
-            sum = Math.max(sum + nums[i],nums[i]);
-            maxAns = Math.max(maxAns,sum);
+            sum = Math.max(sum + nums[i], nums[i]);
+            maxAns = Math.max(maxAns, sum);
         }
         return maxAns;
     }
@@ -99,14 +99,14 @@ class Solution {
      * 若当前指针元素之前的和小于0，则丢弃当前元素之前的数列
      * 解答成功: 执行耗时:1 ms,击败了92.21% 的Java用户 内存消耗:38.3 MB,击败了56.27% 的Java用户
      */
-    public int maxSubArray(int[] nums){
+    public int maxSubArray(int[] nums) {
         //从数组中去取最大值
         int maxAns = nums[0];   //假设第一个元素是最大值
         for (int i = 1; i < nums.length; i++) {
-            if (nums[i-1] > 0)
-                nums[i] += nums[i-1];
+            if (nums[i - 1] > 0)
+                nums[i] += nums[i - 1];
 
-            maxAns =  Math.max(nums[i],maxAns);
+            maxAns = Math.max(nums[i], maxAns);
         }
         return maxAns;
     }
