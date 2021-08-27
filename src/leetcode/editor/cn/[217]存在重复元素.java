@@ -36,7 +36,7 @@ class Solution {
     public boolean containsDuplicate(int[] nums) {
         Set<Integer> set = new HashSet<>();
         for (int num : nums) {
-            if (!set.add(num)){
+            if (!set.add(num)) {
                 return true;
             }
         }
@@ -53,8 +53,8 @@ class Solution {
         //排序，从小到大
         Arrays.sort(nums);
         //相邻数据比较，存在相同返回true
-        for (int i = 0; i < nums.length -1 ; i++) {
-            if (nums[i]==nums[i+1]){
+        for (int i = 0; i < nums.length - 1; i++) {
+            if (nums[i] == nums[i + 1]) {
                 return true;
             }
         }
