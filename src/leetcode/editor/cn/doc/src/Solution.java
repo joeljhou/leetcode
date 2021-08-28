@@ -1,29 +1,30 @@
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 解决方案
  */
 public class Solution {
 
-    public int[][] matrixReshape(int[][] mat, int r, int c) {
-        int m = mat.length;       //获取矩阵的行数
-        int n = mat[0].length;    //获取矩阵的列数
-        if (m * n != r * c) {     //数据量不一致，无法转换
-            return mat;
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> ret = new ArrayList<>();
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> row = new ArrayList<>();
+            for (int j = 0; j < i + 1; j++) {
+                if (i == 0 || j==0 || i == j) {
+                    row.add(1);
+                } else {
+                    row.add(ret.get(i-1).get(j - 1) + ret.get(i-1).get(j));
+                }
+            }
+            ret.add(row);
         }
-
-        //定义一个一维数组存储矩阵数据
-        int[][] ans = new int[r][c];
-
-        //遍历矩阵
-        for (int i = 0; i < m * n; i++) {
-            ans[i / c][i % c] = mat[i / n][i % n];
-        }
-        return ans;
+        return ret;
     }
 
     public static void main(String[] args) {
         Solution solution = new Solution();
+        System.out.println(solution.generate(5));
     }
 
 }
