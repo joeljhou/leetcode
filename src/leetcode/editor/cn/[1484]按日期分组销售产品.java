@@ -53,6 +53,7 @@
 
 //There is no code of Java type for this problem
 
+//GROUP_CONCAT 把多列返回结果集拼接成一个字符串
 select
     sell_date,
     count(distinct product) num_sold,
