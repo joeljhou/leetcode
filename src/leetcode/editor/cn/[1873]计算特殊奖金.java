@@ -55,11 +55,18 @@
 // Related Topics 数据库 👍 33 👎 0
 
 
-//There is no code of Java type for this problem
+//case when(正则匹配) else end
 select employee_id,
         case when
         mod(employee_id,2) =1 and name not rlike '^M'
         then
         salary
         else 0 end as bonus
+from Employees order by employee_id;
+
+
+//if(函数匹配)
+select
+employee_id,
+if(MOD(employee_id,2) =1 and LEFT(name,1) != 'M',salary,0) as bonus
 from Employees order by employee_id;
