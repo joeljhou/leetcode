@@ -44,6 +44,7 @@
 
 //There is no code of Java type for this problem
 
+//利用mysql字符串函数
 SELECT user_id,
-        CONCAT( UPPER( LEFT( NAME,1)),LOWER( SUBSTRING( NAME,2 ))) as name
+        CONCAT(UPPER(LEFT(NAME,1)),LOWER(SUBSTRING(NAME,2))) as name
 FROM users ORDER BY user_id;
