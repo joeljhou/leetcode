@@ -48,7 +48,13 @@
 
 //There is no code of Java type for this problem
 
+//自关联匹配email
 DELETE p1 from Person p1,Person p2
 WHERE
 p1.Email = p2.Email
         AND p1.Id > p2.Id;
+
+//暴力破解 delete not in
+delete from person where id not in(
+    select id from (select min(id) id from person group by email) as keep
+)
